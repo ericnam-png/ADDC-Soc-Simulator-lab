@@ -1,4 +1,4 @@
-# Active Directory Home Lab — Environment Setup
+# SOC Lab with Active Directory, Ubuntu Splunk Server, and Sysmon
 
 > **Part 1 of the Active Directory Project series.**
 > For attack simulation and detection, see 👉 *(Part 2)*
