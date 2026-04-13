@@ -140,10 +140,15 @@ Configured Windows Server 2022 as an Active Directory Domain Controller.
 
 Real issues encountered and resolved during setup:
 
-- **Splunk UF PATH issue on Windows:** `splunk` command not recognized in PowerShell — resolved by navigating to `C:\Program Files\SplunkUniversalForwarder\bin\` and running `.\splunk.exe` directly
-- **DSRM password complexity error:** Initial DSRM password rejected during DC promotion — resolved by using a password meeting uppercase, lowercase, number, and symbol requirements
+- **Splunk log ingestion failure due to incorrect configuration path:**  
+  `inputs.conf` was initially created in the main Splunk directory instead of the Universal Forwarder directory — resolved by placing the file in `SplunkUniversalForwarder\etc\system\local`, after which log forwarding to Splunk was successful
 - **Domain join DNS error:** Win11 could not contact the DC initially — resolved by correctly setting the preferred DNS to `192.168.10.6` via Advanced TCP/IP settings and flushing DNS cache
 - **Sysmon log source duplication:** Both `WinEventLog` and `XmlWinEventLog` sources appeared in Splunk — expected behavior when `renderXml = true` is configured
+
+<p>
+  <img src="addc-setup/DNS_TroubleShoot.png" width="400"/>
+  <img src="addc-setup/DNS_TroubleResolved.png" width="400"/>
+</p>
 
 ---
 
@@ -160,7 +165,7 @@ Real issues encountered and resolved during setup:
 
 ## References
 
-- [MyDFIR YouTube Channel](https://www.youtube.com/@MyDFIR)
 - [Sysmon Event ID Reference — Microsoft Docs](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon)
 - [Splunk Universal Forwarder Manual](https://docs.splunk.com/Documentation/Forwarder)
 - [Active Directory Domain Services Overview — Microsoft Docs](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)
+- [MyDFIR YouTube Channel](https://www.youtube.com/@MyDFIR)
