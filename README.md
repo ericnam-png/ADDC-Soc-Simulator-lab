@@ -91,7 +91,7 @@ renderXml = true
 source = XmlWinEventLog:Microsoft-Windows-Sysmon/Operational
 ```
 
-**Verification:** Confirmed both hosts visible in Splunk with `index=endpoint` — 85,000+ events across Security, Sysmon, System, and Application sources from both win11-T1 and ADDC-T2.
+**Verification:** Confirmed both hosts visible in Splunk with `index=endpoint` — 175,000+ events across Security, Sysmon, System, and Application sources from both win11-T1 and ADDC-T2.
 
 <p>
   <img src="addc-setup/Splunk_inputs_conf.png" width="400"/>
@@ -112,21 +112,27 @@ Configured Windows Server 2022 as an Active Directory Domain Controller.
 | OU | User | Logon Name |
 |---|---|---|
 | Sales | Mike Rans | mike_R |
-| HR | Sorry Han | sorry_H |
+| HR | Sorry Han | verysorryhan |
 
 <p>
   <img src="addc-setup/ADDC_Root_Domain_Name.png" width="400"/>
+  <img src="addc-setup/ADDC_Domain_Check.png" width="400"/>
   <img src="addc-setup/ADDC_OU_Tree.png" width="400"/>
 </p>
 
 ### 6. Joining Win11 to the Domain
 
 - Set Win11 preferred DNS to `192.168.10.6` (the DC) via TCP/IPv4 Advanced settings
-- Flushed DNS cache: `ipconfig /flushdns`
 - Verified DNS resolution: `nslookup ad.eric.local` → resolved to `192.168.10.6`
 - Joined domain via System Properties → Computer Name → Change
 - Confirmed "Welcome to the AD.ERIC.LOCAL domain" and restarted
-- Signed in as domain user `mike_R` — login successful
+- Signed in as domain user `verysorryhan` — login successful
+
+<p>
+  <img src="addc-setup/Win11_Joining_to_Domain.png" width="400"/>
+  <img src="addc-setup/Win11_Han's_Login.png" width="400"/>
+  <img src="addc-setup/Win11_Han's_Terminal.png" width="400"/>
+</p>
 
 ---
 
