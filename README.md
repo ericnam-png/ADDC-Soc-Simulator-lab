@@ -26,7 +26,9 @@ This project builds a 4-machine Active Directory home lab environment designed t
 - Sysmon + Splunk Universal Forwarder installed on both Win11 and ADDC-T2
 - Logs forwarded to Ubuntu Splunk server via TCP port 9997
 
-![Architecture Diagram](./diagrams/addc_project_diagram.png)
+<p>
+  <img src="addc-setup/ADDC_Project_OverView.png" width="700"/>
+</p>
 
 ---
 
