@@ -95,7 +95,7 @@ source = XmlWinEventLog:Microsoft-Windows-Sysmon/Operational
 <p>
   <img src="addc-setup/Splunk_inputs_conf.png" width="400"/>
   <img src="addc-setup/Splunk_Hosts_Injested.png" width="400"/>
-  centralized log collection from multiple Windows hosts was validated in Splunk
+  Result: centralized log collection from multiple Windows hosts was validated in Splunk
 </p>
 
 ### 5. Active Directory Domain Controller Setup
