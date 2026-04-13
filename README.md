@@ -22,7 +22,7 @@ This project builds a 4-machine Active Directory home lab environment designed t
 
 - Domain: `ad.eric.local`
 - Network: `192.168.10.0/24`
-- All machines run on VirtualBox with an internal NAT network
+- All machines run on VirtualBox with a NAT network
 - Sysmon + Splunk Universal Forwarder installed on both Win11 and ADDC-T2
 - Logs forwarded to Ubuntu Splunk server via TCP port 9997
 
@@ -36,7 +36,7 @@ This project builds a 4-machine Active Directory home lab environment designed t
 
 ### 1. Virtual Machine Setup
 
-Created four virtual machines in VirtualBox and placed them on the same internal network for inter-machine communication while remaining isolated from the host.
+Created four virtual machines in VirtualBox and configured them on a shared NAT network, enabling inter-machine communication while routing external connectivity through the host.
 
 ### 2. Ubuntu Splunk Server Setup
 
@@ -47,7 +47,14 @@ Splunk Enterprise was installed on the Ubuntu machine via CLI. A VirtualBox shar
 - Enabled boot-start: `sudo ./splunk enable boot-start -user splunk`
 - Enabled receiving on TCP port 9997: `sudo /opt/splunk/bin/splunk enable listen 9997`
 - Verified listener: `sudo ss -tulnp | grep 9997`
-- Created a custom index named `endpoint` in the Splunk web UI
+##- Created a custom index named `endpoint` in the Splunk web UI
+
+<p>
+  <img src="addc-setup/Ubuntu_Share_File.png" width="400"/>
+  <img src="addc-setup/Ubuntu_StartUp_Set.png" width="400"/>
+  <img src="addc-setup/Ubuntu_Splunk_Running+Listening.png" width="400"/>
+  <img src="addc-setup/Splunk_Port9997.png" width="400"/>
+</p>
 
 **Splunk server:** version 10.2.1 — web interface at `http://192.168.10.4:8000`, receiving port `9997`
 
@@ -86,6 +93,11 @@ source = XmlWinEventLog:Microsoft-Windows-Sysmon/Operational
 
 **Verification:** Confirmed both hosts visible in Splunk with `index=endpoint` — 85,000+ events across Security, Sysmon, System, and Application sources from both win11-T1 and ADDC-T2.
 
+<p>
+  <img src="addc-setup/Splunk_inputs_conf.png" width="400"/>
+  <img src="addc-setup/Splunk_Hosts_Injested.png" width="400"/>
+</p>
+
 ### 5. Active Directory Domain Controller Setup
 
 Configured Windows Server 2022 as an Active Directory Domain Controller.
@@ -101,6 +113,11 @@ Configured Windows Server 2022 as an Active Directory Domain Controller.
 |---|---|---|
 | Sales | Mike Rans | mike_R |
 | HR | Sorry Han | sorry_H |
+
+<p>
+  <img src="addc-setup/ADDC_Root_Domain_Name.png" width="400"/>
+  <img src="addc-setup/ADDC_OU_Tree.png" width="400"/>
+</p>
 
 ### 6. Joining Win11 to the Domain
 
