@@ -1,7 +1,7 @@
 # Active Directory Home Lab — Environment Setup
 
 > **Part 1 of the Active Directory Project series.**
-> For attack simulation and detection, see 👉 *(Part 2 — coming soon)*
+> For attack simulation and detection, see 👉 *(Part 2)*
 
 ---
 
@@ -47,7 +47,6 @@ Splunk Enterprise was installed on the Ubuntu machine via CLI. A VirtualBox shar
 - Enabled boot-start: `sudo ./splunk enable boot-start -user splunk`
 - Enabled receiving on TCP port 9997: `sudo /opt/splunk/bin/splunk enable listen 9997`
 - Verified listener: `sudo ss -tulnp | grep 9997`
-##- Created a custom index named `endpoint` in the Splunk web UI
 
 <p>
   <img src="addc-setup/Ubuntu_Share_File.png" width="400"/>
@@ -67,7 +66,7 @@ Sysmon was installed on both Win11-T1 and ADDC-T2 for detailed endpoint visibili
 
 ### 4. Splunk Universal Forwarder — Win11 and ADDC-T2
 
-Installed Splunk Universal Forwarder 10.2.1 on both Windows machines and configured `inputs.conf` to forward logs to the Ubuntu Splunk server.
+Created a custom index named `endpoint` in Splunk and configured Splunk Universal Forwarder (v10.2.1) on both Windows machines to forward logs to the Ubuntu Splunk server via `inputs.conf`
 
 **`inputs.conf`** (`C:\Program Files\SplunkUniversalForwarder\etc\system\local\`):
 
