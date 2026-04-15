@@ -1,7 +1,8 @@
 # SOC Lab with Active Directory, Ubuntu Splunk Server, and Sysmon
 
 > **Part 1 of the Active Directory Project series.**
-> For attack simulation and detection, see 👉 *(Part 2)*
+> For attack simulation and detection, see 👉 [ADDC-Attack-Detection-Simulation
+(Part2)](https://github.com/ericnam-png/ADDC-Attack-Detection-Simulation)
 
 ---
 
